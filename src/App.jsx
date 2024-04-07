@@ -1,35 +1,30 @@
-
-import './App.css'
 import React from 'react'
-import loding from './components/loding'
-import AppRouter from './routes/AppRouter'
-import { NavLink } from 'react-router-dom'
-
-// App dejó de ser tu documento principal, dirigete a AppRouter
-
-function App () {
-  return (
-    <>
-        <ul>
-      <Navbar expand="lg" className="bg-body-tertiary">
-        <Nav className="me-auto">
-          <li><NavLink to="/home">Home</NavLink></li>
-
-          <li><NavLink to="/ubicacion">Ubicacion</NavLink></li>
-          <li><NavLink to="/contacto">Contacto</NavLink></li>
-
-        </Nav>
-
-      </Navbar>
-      <h1>aqui estoy</h1>
-      <AppRouter />
-      
-
-    </ul>
-    
-    </>
-  )
-}
-
-export default App
-
+import ReactDOM from 'react-dom/client'
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+import './index.css'
+// import { HashRouter } from 'react-router-dom'
+import 'bootstrap/dist/css/bootstrap.min.css';
+ 
+import Home from './paginas/Home';
+import Contacto from './paginas/Contacto';
+ 
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home/>
+  },
+  {
+    path: "/contacto",
+    element: <Contacto/>
+  }
+])
+//importe AppRouter y lo coloque dentro del BrowserRouter como componente principal
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+   <RouterProvider router={router}/>
+  </React.StrictMode>,
+ 
+)
